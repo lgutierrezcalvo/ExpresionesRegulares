@@ -1,0 +1,43 @@
+<html>
+
+<head>
+  <title>Coeficiente de caudal mensual</title>
+</head>
+
+<body>
+  <font face="Consolas">
+    <i style="color:#808080" ;>//Comprovar si algun campo no tiene datos y devolver (Sin datos) en caso de ser así.</i><br>
+    <b>if</b> ($feature.Octubre
+    <= <span style="color:#5DADE2" ;>0<span style="color:black" ;> || $feature.Noviembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Diciembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Enero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Febrero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Marzo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Abril <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Mayo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Junio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Julio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Agosto <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Septiembre <= <span style="color:#5DADE2";>0<span style="color:black";>) {<br>
+      <dd><b>return</b> <span style="color:#EC7063";>'(Sin datos)'<span style="color:black";>;</dd>
+    };
+    <br>
+    <br>
+    <i style="color:#808080";>//Calcular el caudal anual.</i><br>
+    var caudalAnual = ($feature.Octubre + $feature.Noviembre + $feature.Diciembre + $feature.Enero + $feature.Febrero + $feature.Marzo + $feature.Abril + $feature.Mayo + $feature.Junio + $feature.Julio + $feature.Agosto + $feature.Septiembre) / 12;<br>
+    <br>
+    <i style="color:#808080";>//Calcular el coeficiente medio de caudal de cada mes, con datos y sin datos, y redondeando la cifra a dos decimales.</i><br>
+    var coeficienteOctubre = $feature.Octubre/caudalAnual;<br>
+    var coeficienteOctubreFinal = <span style="color:#5DADE2";>round<span style="color:black";>(coeficienteOctubre, <span style="color:#5DADE2";>2<span style="color:black";>);<br>
+    <b>if</b> (coeficienteOctubreFinal == <span style="color:#EC7063";>'NaN'<span style="color:black";>){
+      <dd><span style="color:#EC7063";>'(Sin datos)'<span style="color:black";>;</dd>
+    }<br>
+    <b>else</b> {<br>
+      <dd>coeficienteOctubreFinal;</dd>
+    };<br>
+    <br>
+    <i style="color:#808080";>//Asignar aguas alta o aguas bajas dependiendo del coeficiente medio de caudal.</i><br>
+    var aguas = <span style="color:#5DADE2" ;>1<span style="color:black";>;<br>
+    <b>if</b> (coeficienteOctubre > <span style="color:#5DADE2" ;>1<span style="color:black";>) {<br>
+      <dd>aguas = <span style="color:#EC7063";>'Aguas altas'<span style="color:black";>;</dd>
+    }<br>
+    <b>else</b> {<br>
+      <dd>aguas = <span style="color:#EC7063";>'Aguas bajas'<span style="color:black";>;</dd>
+    };<br>
+    <br>
+    <i style="color:#808080";>//Devuelve el coeficiente medio de caudal y el periodo en que se encuentra el río, si en aguas altas o aguas bajas.</i><br>
+    <b>return</b> coeficienteOctubreFinal + <span style="color:#EC7063";>' - '<span style="color:black";> + aguas;
+  </font>
+</body>
+
+</html>

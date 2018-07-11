@@ -1,0 +1,28 @@
+<html>
+
+<head>
+  <title>Caudal medio anual</title>
+</head>
+
+<body>
+  <font face="Consolas">
+    <i style="color:#808080" ;>//Comprobar si algun campo no tiene datos.</i><br>
+    <b>if</b> ($feature.Octubre
+    <= <span style="color:#5DADE2" ;>0<span style="color:black" ;> || $feature.Noviembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Diciembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Enero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Febrero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Marzo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Abril <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Mayo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Junio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Julio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Agosto <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Septiembre <= <span style="color:#5DADE2";>0<span style="color:black";>) {<br>
+      <dd><span style="color:#EC7063";>'(Sin datos)'<span style="color:black";>;</dd>
+    };
+    <br>
+    <br>
+    <i style="color:#808080";>//Calcular el caudal anual, con datos y sin datos, y redondeando la cifra a dos decimales, acompañada de su unidad.</i><br>
+    var caudalAnual = ($feature.Octubre + $feature.Noviembre + $feature.Diciembre + $feature.Enero + $feature.Febrero + $feature.Marzo + $feature.Abril + $feature.Mayo + $feature.Junio + $feature.Julio + $feature.Agosto + $feature.Septiembre) / 12;<br>
+    var caudalAnualFinal = <span style="color:#5DADE2";>round<span style="color:black";>(caudalAnual, <span style="color:#5DADE2";>2<span style="color:black";>)<br>
+    <b>if</b> (caudalAnualFinal <= <span style="color:#5DADE2";>0<span style="color:black";>){<br>
+      <dd><span style="color:#EC7063";>'(Sin datos)'<span style="color:black";>;</dd>
+    } <br>
+    <b>else</b> {<br>
+      <dd>caudalAnualFinal + <span style="color:#EC7063";>' m3/s'<span style="color:black";>;</dd>
+    };
+  </font>
+</body>
+
+</html>

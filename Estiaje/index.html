@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <title>Estiaje</title>
+</head>
+
+<body>
+  <font face="Consolas">
+    <i style="color:#808080";>//Devuelve (Sin datos) si algun campo no tiene datos.</i><br>
+    <b>if</b> ($feature.Octubre
+    <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Noviembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Diciembre <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Enero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Febrero <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Marzo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Abril <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Mayo <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Junio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Julio <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Agosto <= <span style="color:#5DADE2";>0<span style="color:black";> || $feature.Septiembre <= <span style="color:#5DADE2";>0<span style="color:black";>) {<br>
+      <dd><b>return</b> <span style="color:#EC7063";>'(Sin datos)'<span style="color:black";>;</dd>
+    };
+    <br>
+    <br>
+    <i style="color:#808080";>//Bucle para obtener el valor mas bajo de cada entidad y relacionarlo con su mes correspondiente.</i><br>
+    var array = [$feature.Octubre, $feature.Noviembre, $feature.Diciembre, $feature.Enero, $feature.Febrero, $feature.Marzo, $feature.Abril, $feature.Mayo, $feature.Junio, $feature.Julio, $feature.Agosto, $feature.Septiembre];
+    var nombreMeses = [<span style="color:#EC7063";>'Octubre 2014'<span style="color:black";>,<span style="color:#EC7063";>'Noviembre 2014'<span style="color:black";>,<span style="color:#EC7063";>'Diciembre 2014'<span style="color:black";>,<span style="color:#EC7063";>'Enero 2015'<span style="color:black";>,<span style="color:#EC7063";>'Febrero 2015'<span style="color:black";>,<span style="color:#EC7063";>'Marzo 2015'<span style="color:black";>,<span style="color:#EC7063";>'Abril 2015'<span style="color:black";>,<span style="color:#EC7063";>'Mayo 2015'<span style="color:black";>,<span style="color:#EC7063";>'Junio 2015'<span style="color:black";>,<span style="color:#EC7063";>'Julio 2015'<span style="color:black";>,<span style="color:#EC7063";>'Agosto 2015'<span style="color:black";>,<span style="color:#EC7063";>'Septiembre 2015'<span style="color:black";>];<br>
+    var minimo = <span style="color:#5DADE2";>9999<span style="color:black";>;<br>
+    var mes = <span style="color:#EC7063";>""<span style="color:black";>;<br>
+    <b>for</b> (var arrayIndex = <span style="color:#5DADE2";>0<span style="color:black";>; arrayIndex < <span style="color:#5DADE2";>12<span style="color:black";>; arrayIndex++) {<br>
+      <dd><b>if</b> (array[arrayIndex] < minimo) {</dd>
+        <dd>&nbsp;&nbsp;&nbsp;&nbsp;minimo = array[arrayIndex];</dd>
+        <dd>&nbsp;&nbsp;&nbsp;&nbsp;mes = nombreMeses[arrayIndex];</dd>
+      <dd>};</dd>
+    };<br>
+    <br>
+    <i style="color:#808080";>//Devuelve el mes de mayor caudal en cada estación de aforo, seguido del valor correspondiente a ese mes, acompañado de la unidad.</i><br>
+    <b>return</b> mes + <span style="color:#EC7063";>' - '<span style="color:black";> + minimo + <span style="color:#EC7063";>' m3/s'<span style="color:black";>;
+  </font>
+</body>
+
+</html>
